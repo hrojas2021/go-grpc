@@ -1,0 +1,54 @@
+syntax = "proto3";
+import "google/protobuf/wrappers.proto";
+
+option go_package = "./proto";
+
+service Calculator {
+    rpc Add(AddRequest) returns (AddResponse) {}
+    rpc Subtract(SubtractRequest) returns (SubtractResponse) {}
+    rpc Complex(ComplexRequest) returns (ComplexResponse) {}
+}
+
+message AddRequest {
+    int32 a = 1;
+    int32 b = 2;
+}
+
+message AddResponse {
+    int32 result = 1;
+}
+
+message SubtractRequest {
+    int32 a = 1;
+    int32 b = 2;
+}
+
+message SubtractResponse {
+    int32 result = 1;
+}
+
+// Define message types for a new Complex operation
+message ComplexRequest {
+    string name = 1;
+    int32 age = 2;
+    float height = 3;
+    bool is_student = 4;
+    repeated string hobbies = 5;
+    map<string, int32> scores = 6;
+    NestedMessage nested_message = 7;
+}
+
+message ComplexResponse {
+    string message = 1;
+    double value = 2;
+    repeated bytes data = 3;
+    map<int32, string> id_to_name = 4;
+    NestedMessage nested_message = 5;
+    google.protobuf.StringValue nullable_string = 6;
+    google.protobuf.Int32Value nullable_int32 = 7;
+}
+
+message NestedMessage {
+    int64 timestamp = 1;
+    google.protobuf.Int32Value count =2;
+}
