@@ -42,7 +42,7 @@ func (s *calculatorServer) Complex(ctx context.Context, req *proto.ComplexReques
 	}
 
 	response := &proto.ComplexResponse{
-		Message:  "OK",
+		Message:  fmt.Sprintf("Name %+v is OK", req.GetName()),
 		Value:    345.45,
 		Data:     data,
 		IdToName: map[int32]string{200: "OK"},
